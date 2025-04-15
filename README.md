@@ -129,5 +129,5 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 Contributing
 Contributions are welcome! Please submit a pull request or open an issue on GitHub.
 Contact
-For questions or support, please open an issue on GitHub or contact [Your Email Address].
+For questions or support, please open an issue on GitHub or contact ahmad.a.alghannam@gmail.com.
 Last updated: April 14, 2025
