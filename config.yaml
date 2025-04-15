@@ -1,0 +1,64 @@
+defaults:
+  ip: "127.0.0.1"
+  port: 502
+  slave_id: 1
+
+registers:
+  - address: 0
+    name: voltage_l1_n
+    description: Voltage L1-N
+    type: uint16
+    scale: 10
+    base_value: 230.0
+    randomize: true
+    fluctuation: 0.05
+  - address: 1
+    name: current_l1
+    description: Current L1
+    type: uint16
+    scale: 100
+    base_value: 5.0
+    randomize: true
+    fluctuation: 0.1
+  - address: 2
+    name: power_l1
+    description: Power L1
+    type: uint32
+    scale: 1000
+    expression: voltage_l1_n * current_l1
+  - address: 4
+    name: power_l2
+    description: Power L2
+    type: uint32
+    scale: 1000
+    expression: voltage_l1_n * current_l1 * 1.25
+  - address: 6
+    name: total_kwh_l1
+    description: Total Energy L1
+    type: uint32
+    scale: 1000
+    accumulate: true
+    source: adjusted_power
+  - address: 8
+    name: total_kwh_l2
+    description: Total Energy L2
+    type: uint32
+    scale: 1000
+    accumulate: true
+    source: power_l2
+  - address: 10
+    name: setpoint
+    description: Setpoint Percentage (0-100)
+    type: uint16
+    scale: 1
+    base_value: 25
+    writable: true
+    variable_name: sp
+    min_value: 0
+    max_value: 100
+  - address: 12
+    name: adjusted_power
+    description: Power adjusted by setpoint percentage
+    type: uint32
+    scale: 1000
+    expression: power_l1 * (sp / 100.0)

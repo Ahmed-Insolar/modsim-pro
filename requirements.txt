@@ -1,0 +1,4 @@
+pymodbus>=3.6.8
+pyyaml>=5.1
+rich>=10.0
+keyboard>=0.13.5
